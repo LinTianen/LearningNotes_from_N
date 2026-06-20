@@ -1,4 +1,4 @@
-# 第7章 参数估计 详细笔记
+# 第7章 参数估计
 ## 一、参数估计概述
 ### 1. 统计推断的分类
 统计推断是数理统计的核心，主要分为两类基本问题：
@@ -10,8 +10,6 @@
 - 分类：
   - **点估计**：用一个具体的数值去估计未知参数。
   - **区间估计**：给出包含未知参数的一个区间范围，并给出该区间包含参数真值的可靠程度。
-
----
 
 ## 二、点估计
 ### 1. 点估计的基本概念
@@ -25,7 +23,7 @@
 #### （1）理论基础
 由辛钦大数定律：样本原点矩依概率收敛于对应的总体原点矩，样本矩的连续函数依概率收敛于总体矩的连续函数。
 - 总体$k$阶原点矩：$\mu_k = E(X^k)$
-- 样本$k$阶原点矩：$A_k = \frac{1}{n}\sum_{i=1}^n X_i^k$
+- 样本$k$阶原点矩：$\displaystyle A_k = \frac{1}{n}\sum_{i=1}^n X_i^k$
 
 #### （2）定义
 用样本原点矩估计相应的总体原点矩，用样本原点矩的连续函数估计总体原点矩的连续函数，这种方法称为**矩估计法**。
@@ -44,23 +42,24 @@
 
 #### （5）重要性质与结论
 - 矩估计具有**不变性**：若$\hat{\theta}$是$\theta$的矩估计，$g(\theta)$是连续函数，则$g(\hat{\theta})$是$g(\theta)$的矩估计。
-- 矩估计的前提是总体对应的矩必须存在。
+- 矩估计的前提是**总体对应的矩必须存在**。
 - 对任意总体，只要均值和方差存在：
   - 总体均值的矩估计：$\hat{\mu} = \overline{X}$
-  - 总体方差的矩估计：$\hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$（样本二阶中心矩，记为$B_2$）
+  - 总体方差的矩估计：$\displaystyle \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$（样本二阶中心矩，记为$B_2$）
   该结果不依赖总体的具体分布形式。
 
 #### （6）典型例题
 - **例1：单参数密度函数**
   总体概率密度：$f(x;\theta)=\begin{cases}(\theta+1)x^\theta, & 0<x<1 \\ 0, & 其它\end{cases}\quad (\theta>-1)$
-  一阶总体矩：$E(X)=\int_0^1 x\cdot(\theta+1)x^\theta dx = \frac{\theta+1}{\theta+2}$
-  令$\frac{\theta+1}{\theta+2}=\overline{X}$，解得矩估计量：$\hat{\theta} = \frac{2\overline{X}-1}{1-\overline{X}}$
+  一阶总体矩：$\displaystyle E(X)=\int_0^1 x\cdot(\theta+1)x^\theta dx = \frac{\theta+1}{\theta+2}$
+  令$\displaystyle \frac{\theta+1}{\theta+2}=\overline{X}$，解得矩估计量：$\displaystyle \hat{\theta} = \frac{2\overline{X}-1}{1-\overline{X}}$
 
 - **例2：均匀分布$U[a,b]$**
-  总体一阶矩：$\mu_1 = \frac{a+b}{2}$；总体二阶矩：$\mu_2 = \frac{(b-a)^2}{12}+\left(\frac{a+b}{2}\right)^2$
+  总体一阶矩：$\displaystyle \mu_1 = \frac{a+b}{2}$；
+  总体二阶矩：$\displaystyle \mu_2 = \frac{(b-a)^2}{12}+\left(\frac{a+b}{2}\right)^2$
   解得矩估计量：
   $$\hat{a} = \overline{X} - \sqrt{3B_2},\quad \hat{b} = \overline{X} + \sqrt{3B_2}$$
-  其中$B_2=\frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$为样本二阶中心矩。
+  其中$\displaystyle B_2=\frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$为样本二阶中心矩。
 
 ### 3. 最大似然估计法（MLE）
 #### （1）基本思想
@@ -94,75 +93,60 @@
 
 - **例2：正态分布$N(\mu,\sigma^2)$**
   解得最大似然估计：
-  $$\hat{\mu} = \overline{X},\quad \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2 = B_2$$
+  $\hat{\mu} = \overline{X},\quad \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2 = B_2$
   注意：方差的MLE是样本二阶中心矩（有偏估计）。
 
 - **例3：均匀分布$U[a,b]$**
   似然函数：$L(a,b)=\begin{cases}\displaystyle\frac{1}{(b-a)^n}, & a\le x_1,\dots,x_n\le b \\ 0, & 其它\end{cases}$
   要最大化$L(a,b)$，需最小化$b-a$，因此：
-  $$\hat{a} = \min_{1\le i\le n}\{X_i\},\quad \hat{b} = \max_{1\le i\le n}\{X_i\}$$
+  $\hat{a} = \min_{1\le i\le n}\{X_i\},\quad \hat{b} = \max_{1\le i\le n}\{X_i\}$
   此例求导法失效，由最大似然原则直接得到。
-
----
 
 ## 三、估计量的评选标准
 同一参数可以有多个估计量，需要标准来判断优劣，常用三个标准：**无偏性、有效性、相合性**。
 
 ### 1. 无偏性
-#### （1）定义
-设$\hat{\theta}=\hat{\theta}(X_1,\dots,X_n)$是$\theta$的估计量，若
-$$E(\hat{\theta}) = \theta$$
+1. 定义：设$\hat{\theta}=\hat{\theta}(X_1,\dots,X_n)$是$\theta$的估计量，若$E(\hat{\theta}) = \theta$
 则称$\hat{\theta}$是$\theta$的**无偏估计量**。
+2. 意义
+   - $E(\hat{\theta})-\theta$称为**系统误差**，无偏性表示没有系统性偏差。
+   - 单次估计可能偏离真值，但大量重复使用时，平均偏差为0，估计值在真值附近随机波动。
 
-#### （2）意义
-- $E(\hat{\theta})-\theta$称为**系统误差**，无偏性表示没有系统性偏差。
-- 单次估计可能偏离真值，但大量重复使用时，平均偏差为0，估计值在真值附近随机波动。
+3. 重要结论
+   - 样本$k$阶原点矩$A_k$是总体$k$阶原点矩$\mu_k$的无偏估计（对任意总体，只要矩存在）。
+   - 样本均值$\overline{X}$是总体均值$\mu$的无偏估计。
+   - **样本方差**$\displaystyle S^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$是总体方差$\sigma^2$的无偏估计。
+   - 样本二阶中心矩$\displaystyle B_2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$是总体方差的**有偏估计**，$\displaystyle E(B_2)=\frac{n-1}{n}\sigma^2$。
 
-#### （3）重要结论
-- 样本$k$阶原点矩$A_k$是总体$k$阶原点矩$\mu_k$的无偏估计（对任意总体，只要矩存在）。
-- 样本均值$\overline{X}$是总体均值$\mu$的无偏估计。
-- **样本方差**$S^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$是总体方差$\sigma^2$的无偏估计。
-- 样本二阶中心矩$B_2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$是总体方差的**有偏估计**，$E(B_2)=\frac{n-1}{n}\sigma^2$。
-
-#### （4）注意事项
-- 同一参数可以有无穷多个无偏估计。
-- 无偏估计可能不存在。
-- 有偏估计可修正为无偏估计：例如均匀分布$U[0,\theta]$的MLE是$\max(X_i)$，$E(\max X_i)=\frac{n}{n+1}\theta$，修正为$\frac{n+1}{n}\max(X_i)$后即为无偏估计。
-- 无偏性在函数变换下不保持不变：例如$\sigma^2$的无偏估计开方后，不是$\sigma$的无偏估计。
+4. 注意事项
+   - 同一参数可以有无穷多个无偏估计。
+   - 无偏估计可能不存在。
+   - 有偏估计可修正为无偏估计：例如均匀分布$U[0,\theta]$的MLE是$\max(X_i)$，$E(\max X_i)=\dfrac{n}{n+1}\theta$，修正为$\dfrac{n+1}{n}\max(X_i)$后即为无偏估计。
+   - 无偏性在函数变换下不保持不变：例如$\sigma^2$的无偏估计开方后，不是$\sigma$的无偏估计。
 
 ### 2. 有效性
-#### （1）前提
-仅在无偏估计的范围内比较优劣。
+1. 前提：仅在无偏估计的范围内比较优劣。
 
-#### （2）定义
-设$\hat{\theta}_1$和$\hat{\theta}_2$都是$\theta$的无偏估计量，若对任意$\theta\in\Theta$，都有
-$$D(\hat{\theta}_1) \le D(\hat{\theta}_2)$$
-且至少存在一个$\theta$使不等号严格成立，则称$\hat{\theta}_1$比$\hat{\theta}_2$**有效**。
+2. 定义：设$\hat{\theta}_1$和$\hat{\theta}_2$都是$\theta$的无偏估计量，若对任意$\theta\in\Theta$，都有$D(\hat{\theta}_1) \le D(\hat{\theta}_2)$，且至少存在一个$\theta$使不等号严格成立，则称$\hat{\theta}_1$比$\hat{\theta}_2$**有效**。
+3. 意义：方差越小，估计值越集中在真值附近，估计的精度越高。
 
-#### （3）意义
-方差越小，估计值越集中在真值附近，估计的精度越高。
-
-#### （4）典型例子
+4. 典型例子
 指数分布总体，$\overline{X}$和$n\cdot\min(X_i)$都是$\theta$的无偏估计：
-- $D(\overline{X}) = \frac{\theta^2}{n}$，$D(n\cdot\min X_i) = \theta^2$
-- 当$n>1$时，$D(\overline{X}) < D(n\cdot\min X_i)$，因此$\overline{X}$更有效。
+   - $\displaystyle D(\overline{X}) = \frac{\theta^2}{n}$，$D(n\cdot\min X_i) = \theta^2$
+   - 当$n>1$时，$D(\overline{X}) < D(n\cdot\min X_i)$，因此$\overline{X}$更有效。
 
 ### 3. 相合性（一致性）
-#### （1）定义
-设$\hat{\theta}$是$\theta$的估计量，若当$n\to\infty$时，$\hat{\theta}$依概率收敛于$\theta$，即对任意$\varepsilon>0$，有
-$$\lim_{n\to\infty} P\{|\hat{\theta}-\theta|<\varepsilon\} = 1$$
-则称$\hat{\theta}$是$\theta$的**相合估计量**。
+1. 定义：设$\hat{\theta}$是$\theta$的估计量，若当$n\to\infty$时，$\hat{\theta}$依概率收敛于$\theta$，即对任意$\varepsilon>0$，有$\displaystyle\lim_{n\to\infty} P\{|\hat{\theta}-\theta|<\varepsilon\} = 1$,则称$\hat{\theta}$是$\theta$的**相合估计量**。
 
-#### （2）意义
+2. 意义
 大样本性质：样本容量足够大时，估计值以很大概率接近真值。
 
-#### （3）结论
-- 样本矩是总体矩的相合估计（辛钦大数定律），因此矩估计一般都具有相合性。
-- 最大似然估计在一定正则条件下也具有相合性。
+3. 结论
+   - 样本矩是总体矩的相合估计（辛钦大数定律），因此矩估计一般都具有相合性。
+   - 最大似然估计在一定正则条件下也具有相合性。
 
 > 实际工程中更常用无偏性和有效性，因为相合性需要很大的样本量，往往难以满足。
 
----
 
 ## 四、区间估计
 ### 1. 区间估计的概念
@@ -170,9 +154,7 @@ $$\lim_{n\to\infty} P\{|\hat{\theta}-\theta|<\varepsilon\} = 1$$
 点估计仅给出参数的近似值，无法反映估计的误差范围和可靠程度；区间估计弥补了这一缺陷，同时给出参数的范围和该范围包含真值的可信程度。
 
 #### （2）置信区间定义
-设$\theta$为待估参数，给定$\alpha>0$（显著性水平），若由样本确定两个统计量$\underline{\theta}$和$\overline{\theta}$（$\underline{\theta}<\overline{\theta}$），满足
-$$P\{\underline{\theta} < \theta < \overline{\theta}\} = 1-\alpha$$
-则称区间$(\underline{\theta},\overline{\theta})$是$\theta$的**置信水平为$1-\alpha$的置信区间**。
+设$\theta$为待估参数，给定$\alpha>0$（显著性水平），若由样本确定两个统计量$\underline{\theta}$和$\overline{\theta}$（$\underline{\theta}<\overline{\theta}$），满足$P\{\underline{\theta} < \theta < \overline{\theta}\} = 1-\alpha$，则称区间$(\underline{\theta},\overline{\theta})$是$\theta$的**置信水平为$1-\alpha$的置信区间**。
 - $\underline{\theta}$：置信下限；$\overline{\theta}$：置信上限。
 - $1-\alpha$：置信水平/置信度，表示反复抽样时，包含真值的区间占总区间数的比例。
 
@@ -195,29 +177,27 @@ $$P\{\underline{\theta} < \theta < \overline{\theta}\} = 1-\alpha$$
 ### 3. 单个正态总体均值的置信区间
 | 条件 | 枢轴量与分布 | 置信水平$1-\alpha$的置信区间 |
 | :--- | :--- | :--- |
-| $\sigma^2$已知 | $U=\frac{\overline{X}-\mu}{\sigma/\sqrt{n}} \sim N(0,1)$ | $\displaystyle\left( \overline{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \right)$ |
-| $\sigma^2$未知 | $t=\frac{\overline{X}-\mu}{S/\sqrt{n}} \sim t(n-1)$ | $\displaystyle\left( \overline{X} \pm t_{\alpha/2}(n-1) \cdot \frac{S}{\sqrt{n}} \right)$ |
+| $\sigma^2$已知 | $U=\dfrac{\overline{X}-\mu}{\sigma/\sqrt{n}} \sim N(0,1)$ | $\displaystyle\left( \overline{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \right)$ |
+| $\sigma^2$未知 | $t=\dfrac{\overline{X}-\mu}{S/\sqrt{n}} \sim t(n-1)$ | $\displaystyle\left( \overline{X} \pm t_{\alpha/2}(n-1) \cdot \frac{S}{\sqrt{n}} \right)$ |
 
----
 
 ## 五、单侧置信区间
-### 1. 概念
+1. 概念
 部分实际问题仅关心参数的单侧界限（如元件寿命只关心下限，次品率只关心上限），此时使用单侧置信区间。
 
-### 2. 定义
-- **单侧置信下限**：若$P\{\theta \ge \underline{\theta}\} = 1-\alpha$，则$[\underline{\theta}, +\infty)$为单侧置信区间，$\underline{\theta}$为单侧置信下限。
-- **单侧置信上限**：若$P\{\theta \le \overline{\theta}\} = 1-\alpha$，则$(-\infty, \overline{\theta}]$为单侧置信区间，$\overline{\theta}$为单侧置信上限。
+2. 定义
+   - **单侧置信下限**：若$P\{\theta \ge \underline{\theta}\} = 1-\alpha$，则$[\underline{\theta}, +\infty)$为单侧置信区间，$\underline{\theta}$为单侧置信下限。
+   - **单侧置信上限**：若$P\{\theta \le \overline{\theta}\} = 1-\alpha$，则$(-\infty, \overline{\theta}]$为单侧置信区间，$\overline{\theta}$为单侧置信上限。
 
-### 3. 求解要点
+3. 求解要点
 与双侧区间解法一致，仅将双侧分位点替换为**单侧分位点**。
 例如：正态总体$\sigma^2$未知时，$\mu$的单侧置信下限为：
 $$\underline{\mu} = \overline{X} - t_\alpha(n-1) \cdot \frac{S}{\sqrt{n}}$$
 
----
-
+![](置信区间.jpg)
 ## 六、0-1分布参数的区间估计
 ### 1. 适用场景
-总体服从0-1分布（非正态总体），在**大样本（$n>50$）**下，利用中心极限定理做近似区间估计。
+总体服从0-1分布（非正态总体），在大样本（$n>50$）下，利用中心极限定理做近似区间估计。
 
 ### 2. 原理
 0-1分布总体：$E(X)=p$，$D(X)=p(1-p)$。
@@ -225,17 +205,16 @@ $$\underline{\mu} = \overline{X} - t_\alpha(n-1) \cdot \frac{S}{\sqrt{n}}$$
 $$\frac{n\overline{X} - np}{\sqrt{np(1-p)}} \overset{\text{近似}}{\sim} N(0,1)$$
 
 ### 3. 置信区间公式
-令$P\left\{ -z_{\alpha/2} < \frac{n\overline{X} - np}{\sqrt{np(1-p)}} < z_{\alpha/2} \right\} \approx 1-\alpha$，将不等式转化为关于$p$的一元二次不等式，解得近似置信区间$(p_1,p_2)$，其中：
-$$
+令$P\left\{ -z_{\alpha/2} < \dfrac{n\overline{X} - np}{\sqrt{np(1-p)}} < z_{\alpha/2} \right\} \approx 1-\alpha$，将不等式转化为关于$p$的一元二次不等式，解得近似置信区间$(p_1,p_2)$，其中：
+$
 \begin{cases}
 a = n + z_{\alpha/2}^2 \\
 b = -(2n\overline{X} + z_{\alpha/2}^2) \\
 c = n\overline{X}^2
 \end{cases}
-$$
-$$p_1 = \frac{-b-\sqrt{b^2-4ac}}{2a},\quad p_2 = \frac{-b+\sqrt{b^2-4ac}}{2a}$$
+$
+$p_1 = \dfrac{-b-\sqrt{b^2-4ac}}{2a},\quad p_2 = \dfrac{-b+\sqrt{b^2-4ac}}{2a}$
 
----
 
 ## 本章小结
 1.  参数估计分为点估计和区间估计，点估计给出参数的近似值，区间估计给出带可靠度的范围。
