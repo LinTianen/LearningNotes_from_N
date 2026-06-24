@@ -28,10 +28,10 @@ $$\lim_{n \to \infty} P\left\{ \left| \frac{1}{n}\sum_{k=1}^n X_k - \frac{1}{n}\
 
 #### 2. 证明思路
 基于切比雪夫不等式推导：
-1.  均值的期望：\(\displaystyle E\left( \dfrac{1}{n}\sum_{k=1}^n X_k \right) = \dfrac{1}{n}\sum_{k=1}^n E(X_k) = \mu\)
-2.  均值的方差：\(\displaystyle D\left( \dfrac{1}{n}\sum_{k=1}^n X_k \right) = \dfrac{1}{n^2}\sum_{k=1}^n D(X_k) = \frac{\sigma^2}{n}\)
+1.  均值的期望：\(\displaystyle E\left( \dfrac{1}{n}\sum_{k=1}^n X_k \right) = \dfrac{1}{n}\sum_{k=1}^n E(X_k) \)
+2.  均值的方差：\(\displaystyle D\left( \dfrac{1}{n}\sum_{k=1}^n X_k \right) = \dfrac{1}{n^2}\sum_{k=1}^n D(X_k) \le \frac{C}{n}\)
 3.  代入切比雪夫不等式：
-    $$P\left\{ |\overline{X} - \mu| < \varepsilon \right\} \ge 1 - \frac{\sigma^2}{n\varepsilon^2}$$
+    $$P\left\{\displaystyle  \left|\dfrac{1}{n}\sum_{k=1}^n X_k   - \frac{1}{n}\sum_{k=1}^n E(X_k)\right| < \varepsilon \right\} \ge 1 - \frac{C}{n\varepsilon^2}$$
 4.  令 \(n\to\infty\)，不等式右侧趋于1，故极限为1。
 
 #### 3. 特点与意义

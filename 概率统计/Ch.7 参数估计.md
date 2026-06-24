@@ -2,8 +2,8 @@
 ## 一、参数估计概述
 ### 1. 统计推断的分类
 统计推断是数理统计的核心，主要分为两类基本问题：
-- **参数估计**：用样本统计量去估计总体的未知参数（第7章内容）。
-- **假设检验**：先对总体参数提出假设，再利用样本信息判断假设是否成立（第8章内容）。
+- **参数估计**：用样本统计量去估计总体的未知参数。
+- **假设检验**：先对总体参数提出假设，再利用样本信息判断假设是否成立。
 
 ### 2. 参数估计的前提与分类
 - 前提：假定总体分布形式已知，仅其中的一个或几个参数未知。
@@ -93,13 +93,13 @@
 
 - **例2：正态分布$N(\mu,\sigma^2)$**
   解得最大似然估计：
-  $\hat{\mu} = \overline{X},\quad \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2 = B_2$
+  $\displaystyle\hat{\mu} = \overline{X},\quad \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2 = B_2$
   注意：方差的MLE是样本二阶中心矩（有偏估计）。
 
 - **例3：均匀分布$U[a,b]$**
   似然函数：$L(a,b)=\begin{cases}\displaystyle\frac{1}{(b-a)^n}, & a\le x_1,\dots,x_n\le b \\ 0, & 其它\end{cases}$
   要最大化$L(a,b)$，需最小化$b-a$，因此：
-  $\hat{a} = \min_{1\le i\le n}\{X_i\},\quad \hat{b} = \max_{1\le i\le n}\{X_i\}$
+  $\displaystyle\hat{a} = \min_{1\le i\le n}\{X_i\},\quad \hat{b} = \max_{1\le i\le n}\{X_i\}$
   此例求导法失效，由最大似然原则直接得到。
 
 ## 三、估计量的评选标准

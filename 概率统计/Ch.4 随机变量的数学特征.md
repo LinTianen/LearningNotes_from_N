@@ -1,8 +1,7 @@
 ## 期望
 ### 一、离散型随机变量的数学期望
 **定义**
-设离散型随机变量\(X\)的分布律为\(P\{X=x_k\}=p_k\ (k=1,2,\dots)\)，若级数\(\displaystyle\sum_{k=1}^{\infty}x_kp_k\)**绝对收敛**，则：
-\[E(X)=\sum_{k=1}^{\infty}x_kp_k\]
+设离散型随机变量\(X\)的分布律为\(P\{X=x_k\}=p_k\ (k=1,2,\dots)\)，若级数\(\displaystyle\sum_{k=1}^{\infty}x_kp_k\)**绝对收敛**，则：\(E(X)=\displaystyle\sum_{k=1}^{\infty}x_kp_k\)
 **关键说明**
 - \(E(X)\)是**实数**，非变量；
 - 绝对收敛保证和与项的次序无关；
@@ -10,8 +9,7 @@
 
 ### 二、连续型随机变量的数学期望
 **定义**
-设连续型随机变量\(X\)的概率密度为\(f(x)\)，若积分\(\displaystyle\int_{-\infty}^{+\infty}xf(x)dx\)**绝对收敛**，则：
-\[E(X)=\int_{-\infty}^{+\infty}xf(x)dx\]
+设连续型随机变量\(X\)的概率密度为\(f(x)\)，若积分\(\displaystyle\int_{-\infty}^{+\infty}xf(x)dx\)**绝对收敛**，则：\(\displaystyle E(X)=\int_{-\infty}^{+\infty}xf(x)dx\)
 
 ### 三、随机变量函数的数学期望
 #### 1. 一维情形
@@ -86,14 +84,13 @@ D\left(\sum C_iX_i\right)=\sum C_i^2D(X_i)
 6. 充要条件：\(D(X)=0\iff P\{X=E(X)\}=1\)
 
 ### 五、切比雪夫不等式
-设 \(E(X)=\mu\)，\(D(X)=\sigma^2\)，对任意 \(\varepsilon>0\)：
-\[
-P\left\{|X-\mu|\ge\varepsilon\right\}\le\frac{\sigma^2}{\varepsilon^2}
-\]
-等价形式：
-\[
-P\left\{|X-\mu|<\varepsilon\right\}\ge 1-\frac{\sigma^2}{\varepsilon^2}
-\]
+设 \(E(X)=\mu\)，\(D(X)=\sigma^2\)，
+对任意 \(\varepsilon>0\)：\(
+P\left\{|X-\mu|\ge\varepsilon\right\}\le\dfrac{\sigma^2}{\varepsilon^2}
+\)
+等价形式：\(
+P\left\{|X-\mu|<\varepsilon\right\}\ge 1-\dfrac{\sigma^2}{\varepsilon^2}
+\)
 
 **常用结论**
 - \(P\left\{|X-\mu|\ge k\sigma\right\}\le\displaystyle\frac{1}{k^2}\)
@@ -116,6 +113,9 @@ P\left\{|X-\mu|<\varepsilon\right\}\ge 1-\frac{\sigma^2}{\varepsilon^2}
 1. 对称性：\(\text{Cov}(X,Y)=\text{Cov}(Y,X)\)
 2. 数乘性：\(\text{Cov}(aX,bY)=ab\cdot\text{Cov}(X,Y)\)
 3. 可加性：\(\text{Cov}(X_1+X_2,Y)=\text{Cov}(X_1,Y)+\text{Cov}(X_2,Y)\)
+   $\operatorname{Cov}(X_1+X_2,Y_1+Y_2)
+=\operatorname{Cov}(X_1,Y_1)+\operatorname{Cov}(X_1,Y_2)+\operatorname{Cov}(X_2,Y_1)+\operatorname{Cov}(X_2,Y_2)
+$
 
 ### 3. 常用计算公式
 \[
@@ -151,11 +151,11 @@ D(X+Y)=D(X)+D(Y)+2\text{Cov}(X,Y)
 - \(\rho=0\)：无线性关系，但可存在非线性关系
 
 ## 三、重要结论
-1. 独立 \(\Rightarrow\) 不相关；不相关 \(\nRightarrow\) 独立
+1. **独立 \(\Rightarrow\) 不相关**；不相关 \(\nRightarrow\) 独立
 2. 二维正态分布 \((X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)\)：
    - \(\text{Cov}(X,Y)=\rho\sigma_1\sigma_2\)
    - \(\rho_{XY}=\rho\)
-   - **独立 \(\Leftrightarrow\) 不相关**（等价）
+   - 独立 \(\Leftrightarrow\) 不相关（等价）
   
 ## 矩与协方差矩阵
 ### 一、矩

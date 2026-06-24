@@ -183,7 +183,7 @@ $$F_n(x)=\begin{cases}
 ### 三、三大抽样分布
 #### $\chi^2$分布（卡方分布）
 1. **定义**
-$X_1,X_2,\dots,X_n$相互独立且$X_i\sim N(0,1)$，则：
+$X_1,X_2,\dots,X_n$相互**独立**且$X_i\sim N(0,1)$，则：
 $\displaystyle\chi^2=\sum_{i=1}^n X_i^2\sim\chi^2(n)$
 $n$为**自由度**。
 
@@ -206,7 +206,7 @@ $$ f(x)=\begin{cases}
 
 #### $t$分布
 1. **定义**
-$X\sim N(0,1)$，$Y\sim\chi^2(n)$，且$X、Y$独立，则：
+$X\sim N(0,1)$，$Y\sim\chi^2(n)$，且$X、Y$**独立**，则：
 $\displaystyle t=\frac{X}{\sqrt{Y/n}}\sim t(n)$
 
 
@@ -218,6 +218,9 @@ $$h(t)=\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)\sq
    2. **渐近正态**：$n\to\infty$时，$t(n)\stackrel{近似}{\sim}N(0,1)$
    3. **特例**：$n=1$时为**柯西分布**，无期望方差
    4. **数字特征**：$E(t)=0\ (n>1)$，$D(t)=\displaystyle\frac{n}{n-2}\ (n>2)$
+   5. 指数分布与 $\chi^2(2)$ 的关系
+      - 若 $X \sim E(\lambda)$，则 $2\lambda X \sim E\left(\dfrac12\right)$，且 $E\left(\dfrac12\right)$ 即为 $\chi^2(2)$。
+      - 特别地，当 $\lambda = \dfrac12$ 时，$X$ 本身服从 $\chi^2(2)$。
 
 2. 上$\alpha$分位点
 - 定义：$P\{t>t_\alpha(n)\}=\alpha$
@@ -226,7 +229,7 @@ $$h(t)=\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)\sq
 
 #### $F$分布
 1. 定义
-$U\sim\chi^2(n_1)$，$V\sim\chi^2(n_2)$，且$U、V$独立，则：
+$U\sim\chi^2(n_1)$，$V\sim\chi^2(n_2)$，且$U、V$**独立**，则：
 $F=\dfrac{U/n_1}{V/n_2}\sim F(n_1,n_2)$
 $n_1$：第一自由度，$n_2$：第二自由度。
 
@@ -265,3 +268,77 @@ $X\sim N(\mu_1,\sigma_1^2)$，$Y\sim N(\mu_2,\sigma_2^2)$
 
 ![alt text](四大抽样分布定理.png)
 
+## 典型例题
+### 1. 应用$E(\frac12)\sim t(2)$
+设 $X_1,X_2$ 是来自总体 $X$ 的简单随机样本，且 $X$ 的分布函数为
+$
+F(x) = \displaystyle\int_{-\infty}^{x} \frac{1}{2}e^{-|t|}dt,\quad -\infty < x < +\infty,
+$
+则 $\dfrac{|X_1|}{|X_2|}$ 服从（）。
+A. $F(1,2)$　B. $F(2,1)$　C. $F(2,2)$　D. $F(0,2)$
+
+### 解答
+>**答案：C**
+>由题设，$X$ 的概率密度为$
+>f(x) = \dfrac{1}{2}e^{-|x|},\quad -\infty < x < +\infty.
+>$
+>令 $Y = 2|X|$，先求 $Y$ 的分布：
+>- 当 $y < 0$ 时，$F_Y(y) = 0$；
+>- 当 $y \ge 0$ 时，
+$
+\begin{aligned}
+F_Y(y) &= P(|X| \le \tfrac{y}{2})
+= \int_{-y/2}^{y/2} \frac{1}{2}e^{-|x|}dx
+= \int_{0}^{y/2} e^{-x}dx
+= 1 - e^{-y/2}.
+\end{aligned}
+$
+>
+>求导得概率密度：$
+f_Y(y) =
+\begin{cases}
+\dfrac{1}{2}e^{-y/2}, & y > 0, \\
+0, & else.
+\end{cases}
+$
+>即 $Y = 2|X| \sim E\left(\dfrac12\right)$。
+>
+>**关键转换**
+>指数分布 $E\left(\dfrac12\right)$ 等价于自由度为 $2$ 的卡方分布 $\chi^2(2)$
+（$\chi^2(2)$ 的密度正是 $\dfrac12 e^{-x/2},\ x>0$）。
+>因此 $U=2|X_1| \sim \chi^2(2)$，同理 $V=2|X_2| \sim \chi^2(2)$，且 $U,V$ 相互独立。
+>由 $F$ 分布定义：若 $U\sim\chi^2(n_1),\ V\sim\chi^2(n_2)$ 独立，则$\dfrac{U/n_1}{V/n_2} \sim F(n_1,n_2).$
+>
+>代入得：
+$\displaystyle\frac{|X_1|}{|X_2|}
+= \frac{2|X_1|/2}{2|X_2|/2}
+= \frac{U/2}{V/2}
+\sim F(2,2).
+$
+>
+>故本题选 $\boldsymbol{C}$。
+
+### 2. 
+设 $X_1,X_2,\dots,X_9$ 是来自正态总体 $X$ 的简单随机样本，记
+$Y_1 = \dfrac{1}{6}(X_1 + X_2 + \dots + X_6)$，$Y_2 = \dfrac{1}{3}(X_7 + X_8 + X_9)$，
+$S^2 = \dfrac{1}{2}\displaystyle\sum_{i=7}^9 (X_i - Y_2)^2$，$Z = \dfrac{\sqrt{2}(Y_1 - Y_2)}{S}$，
+证明统计量 $Z$ 服从自由度为 $2$ 的 $t$ 分布。
+
+### 证明
+>记 $\sigma^2 = D(X)$。易得
+>$E(Y_1) = E(Y_2)$，$D(Y_1) = \dfrac{\sigma^2}{6}$，$D(Y_2) = \dfrac{\sigma^2}{3}$。
+>
+>由于 $X_1,X_2,\dots,X_9$ 独立同分布，故 $Y_1$ 与 $Y_2$ 相互独立，且
+>$E(Y_1-Y_2) = 0$，$D(Y_1-Y_2) = \dfrac{\sigma^2}{6} + \dfrac{\sigma^2}{3} = \dfrac{\sigma^2}{2}$，
+>因此 $U = \dfrac{Y_1-Y_2}{\sigma/\sqrt{2}} \sim N(0,1)$。
+>
+>对正态总体的样本方差 $S^2$，随机变量 $\chi^2 = \dfrac{2S^2}{\sigma^2}$ 服从自由度为 $2$ 的 $\chi^2$ 分布。
+>
+>可证 $Y_1,Y_2,S^2$ 相互独立：对任意实数 $u,v,w$，
+>$P(Y_1 \le u,Y_2 \le v,S^2 \le w) = P(Y_1 \le u)P(Y_2 \le v,S^2 \le w) = P(Y_1 \le u)P(Y_2 \le v)P(S^2 \le w)$。
+>第一个等式成立是因为 $X_1,\dots,X_6$ 与 $X_7,X_8,X_9$ 相互独立；
+>第二个等式成立是因为正态总体样本均值与样本方差相互独立，因此 $Y_1-Y_2$ 与 $S^2$ 独立。
+>
+>根据 $t$ 分布定义，整理统计量：
+>$Z = \dfrac{\sqrt{2}(Y_1-Y_2)}{S} = \dfrac{\dfrac{Y_1-Y_2}{\sigma/\sqrt{2}}}{\sqrt{\dfrac{2S^2}{\sigma^2}/2}} = \dfrac{U}{\sqrt{\chi^2/2}}$，
+>该形式符合自由度为 $2$ 的 $t$ 分布构造，故 $Z \sim t(2)$。证毕。
